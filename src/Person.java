@@ -33,9 +33,10 @@ public class Person {
 	public PersonType personType;	// poor, middle, rich
 	public PersonLocation location;	// the location on patch
 	
-	public Person() {
+	public Person(PersonLocation loc) {
 		initialParams(); 
 		age = PersonSettings.randomValue(0, lifeExpectancy); // modeling start with random age
+		location = loc;
 	}
 	
 	/*
