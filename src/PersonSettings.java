@@ -1,5 +1,10 @@
+/*
+ * person settings
+ */
 
-public class GlobalSettings {
+public class PersonSettings {
+	// person global attributes
+	
     public static int lifeExpectancyMax = 100;    // Maximum of person expectancy
     public static int lifeExpectancyMin = 1;      // Minimum of person expectancy
     public static int MetabolismMax 	= 10;     // Maximum of Metabolism
@@ -7,6 +12,8 @@ public class GlobalSettings {
     public static int visionMax		 	= 5;      // Max vision of person
     public static int visionMin		 	= 1;      // Min vision of person
     public static int wealthMax			= 50;	  // Maximum of person wealth
+    
+    // person global functions
     
     public static int randomValue(int minValue, int maxValue) {
     	int range = maxValue - minValue;
@@ -31,7 +38,7 @@ public class GlobalSettings {
     
     public static void updatePersonType(Person[] personArray) {
     	// get max wealth value
-    	int maxWealth = 0;
+    	double maxWealth = 0;
     	for (Person person : personArray) {
     		if (person.wealth > maxWealth) {
 				maxWealth = person.wealth;
