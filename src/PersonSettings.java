@@ -36,7 +36,7 @@ public class PersonSettings {
 		return randomValue(metabolism, wealthMax);
 	}
     
-    public static void updatePersonType(Person[] personArray) {
+    public static wealthRatio updatePersonType(Person[] personArray) {
     	// get max wealth value
     	double maxWealth = 0;
     	for (Person person : personArray) {
@@ -45,17 +45,25 @@ public class PersonSettings {
 			}
 		}
     	
+		int rich = 0;
+		int poor = 0;
+		int middle = 0;
     	for (Person person : personArray) {
     		// Poor: less than 1/3 max wealth
 			if (person.wealth <= maxWealth / 3) {
 				person.personType = PersonType.Poor;
+				poor ++;
 			// Middle: less than 2/3 max wealth and larger than 1/3 max wealth
 			} else if (person.wealth <= maxWealth * 2 / 3) {
 				person.personType = PersonType.Middle;
+				middle ++;
 			// Rich: larger than 2/3
 			} else {
 				person.personType = PersonType.Rich;
+				rich ++;
 			}
 		}
+    	
+    	return new wealthRatio(rich, middle, poor);
     }
 }

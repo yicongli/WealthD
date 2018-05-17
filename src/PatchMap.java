@@ -1,6 +1,4 @@
-import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 /*
  * the map contain patches to grow grain 
@@ -65,9 +63,7 @@ public class PatchMap {
 			ergodicPatches(initialDeffuseGrain);
 		}
 		
-		Consumer<Patch> deffuseGrain = (mPatch) -> {
-			diffuseGrainToNeighbors(mPatch.location);
-		};
+		Consumer<Patch> deffuseGrain = (mPatch) -> diffuseGrainToNeighbors(mPatch.location);
 		for (int i = 0; i < 10; i++) {
 			ergodicPatches(deffuseGrain);
 		}
@@ -108,5 +104,27 @@ public class PatchMap {
         allPatchs[leftCol][downRow].grainHere  += diffusedGrain;
         allPatchs[col][downRow].grainHere	   += diffusedGrain;
         allPatchs[rightCol][downRow].grainHere += diffusedGrain;
+	}
+	
+	public wealthRatio updateMapState (int ticks) {
+		for (Person person : allPersons) {
+			person.updateLocation(this);
+		}
+		
+		Consumer<Patch> harvest = (mPatch) -> mPatch.harvest();
+		ergodicPatches(harvest);
+		
+		for (Person person : allPersons) {
+			person.updatePersonState();
+		}
+		
+		wealthRatio ratioData = PersonSettings.updatePersonType(allPersons);
+		
+		if (ticks % PatchMap.grainGrowthInterval == 0) {
+			Consumer<Patch> growGrain = (mPatch) -> mPatch.growGrain();
+			ergodicPatches(growGrain);
+		}
+		
+		return ratioData;
 	}
 }
