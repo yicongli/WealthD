@@ -11,7 +11,7 @@ class wealthRatio {
 	}
 }
 
-public class wealthDistribution {
+public class MainClass {
 	public static int tickNum = 0;
 	public static ArrayList<wealthRatio> wealthRatioData;
 	
