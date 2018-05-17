@@ -11,19 +11,6 @@ enum PersonType {
     Rich 
 }
 
-/*
- * location of person
- */
-class PersonLocation {
-	public int xCoord;
-	public int yCoord;
-	
-	public PersonLocation(int x, int y) {
-		xCoord = x;
-		yCoord = y;
-	}
-}
-
 public class Person {
 	public int age;					// how old a turtle is
 	public double wealth;			// the amount of grain a turtle has
@@ -31,9 +18,9 @@ public class Person {
 	public int metabolism;			// how much grain a turtle eats each time
 	public int vision;				// how many patches ahead a turtle can see
 	public PersonType personType;	// poor, middle, rich
-	public PersonLocation location;	// the location on patch
+	public LocationCoordinate location;	// the location on patch
 	
-	public Person(PersonLocation loc) {
+	public Person(LocationCoordinate loc) {
 		initialParams(); 
 		age = PersonSettings.randomValue(0, lifeExpectancy); // modeling start with random age
 		location = loc;
@@ -74,8 +61,39 @@ public class Person {
 	/*
 	 * update the location of current person
 	 */
-	public void updateLocation () {
-		
-	}
+	public void updateLocation(PatchMap mPatchMap) {
+        int grainInRightVision = 0;
+        int grainInLeftVision = 0;
+        int grainInUpVision = 0;
+        int grainInDownVision = 0;
+        
+        int col = location.colCoord;
+        int row = location.rowCoord;
+        int colNum = mPatchMap.columnNum;
+        int rowNum = mPatchMap.rowNum;
+
+        for (int i = 1; i <= vision; i++) {
+        	grainInRightVision 	+= mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,i,colNum)][row].grainHere;
+        	grainInLeftVision 	+= mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,-i,colNum)][row].grainHere;
+        	grainInUpVision 	+= mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,-i,rowNum)].grainHere;
+        	grainInDownVision 	+= mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,i,rowNum)].grainHere;
+        }
+
+        int maxGrain = Math.max(grainInUpVision, Math.max(grainInDownVision, Math.max(grainInLeftVision, grainInRightVision)));
+        
+        if (maxGrain == grainInUpVision) {
+        	mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,-1,rowNum)].AddPerson(this);
+        	location = location.moveUp(mPatchMap, 1);
+		} else if (maxGrain == grainInDownVision) {
+			mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,1,rowNum)].AddPerson(this);
+			location = location.moveDown(mPatchMap, 1);
+		} else if (maxGrain == grainInLeftVision) {
+			mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,-1,colNum)][row].AddPerson(this);
+			location = location.moveLeft(mPatchMap, 1);
+		} else {
+			mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,1,colNum)][row].AddPerson(this);
+			location = location.moveRight(mPatchMap, 1);
+		}
+    }
 }
 

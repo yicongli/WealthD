@@ -8,9 +8,11 @@ public class Patch {
 	public double grainHere;					// the current amount of grain on this patch
 	public double maxGrainHere; 				// the maximum amount of grain this patch can hold
 	public ArrayList<Person> occupiedPersons;	// the persons in current patch
+	public LocationCoordinate location;			// patch location
 	
-	public Patch() {
+	public Patch(int x, int y) {
 		occupiedPersons = new ArrayList<Person>();
+		location = new LocationCoordinate(x, y);
 	}
 	
 	/*
