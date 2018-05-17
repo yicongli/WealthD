@@ -29,8 +29,8 @@ public class PatchMap {
 	public void initialPersons () {
 		allPersons = new Person[personNum];
 		for (int i = 0; i < allPersons.length; i++) {
-			int col = PersonSettings.randomValue(1, columnNum);
-			int row = PersonSettings.randomValue(1, rowNum);
+			int col = PersonSettings.randomValue(0, columnNum-1);
+			int row = PersonSettings.randomValue(0, rowNum-1);
 			LocationCoordinate loc = new LocationCoordinate(col, row);
 			
 			allPersons[i] = new Person(loc);
@@ -46,7 +46,7 @@ public class PatchMap {
 		}
 		
 		Consumer<Patch> setBestLand = (mPatch) -> {
-			if (PersonSettings.randomValue(0,100) <= percentBestLand) {
+			if (PersonSettings.randomValue(0,99) <= percentBestLand) {
 				mPatch.maxGrainHere = PatchMap.grainMax;
 				mPatch.grainHere = PatchMap.grainMax;
 			}
@@ -78,7 +78,7 @@ public class PatchMap {
 	public void ergodicPatches (Consumer<Patch> handleFunction) {
 		for (int i = 0 ; i < columnNum ; i++) {
 			for (int j = 0 ; j < rowNum ; j++) {
-				handleFunction.accept(allPatchs[columnNum][rowNum]);
+				handleFunction.accept(allPatchs[i][j]);
 			}
 		}
 	}
