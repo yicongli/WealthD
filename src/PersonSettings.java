@@ -7,8 +7,8 @@ public class PersonSettings {
 	
     public static int lifeExpectancyMax = 100;    // Maximum of person expectancy
     public static int lifeExpectancyMin = 1;      // Minimum of person expectancy
-    public static int MetabolismMax 	= 10;     // Maximum of Metabolism
-    public static int MetabolismMin 	= 1;      // Minimum of Metabolism
+    public static int metabolismMax 	= 10;     // Maximum of Metabolism
+    public static int metabolismMin 	= 1;      // Minimum of Metabolism
     public static int visionMax		 	= 5;      // Max vision of person
     public static int visionMin		 	= 1;      // Min vision of person
     public static int wealthMax			= 50;	  // Maximum of person wealth
@@ -21,7 +21,7 @@ public class PersonSettings {
     }
     
     public static int randomMetabolism() {
-		return randomValue(MetabolismMin, MetabolismMax);
+		return randomValue(metabolismMin, metabolismMax);
 	}
     
     public static int randomLifeExpectancy() {

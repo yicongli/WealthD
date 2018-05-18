@@ -13,7 +13,7 @@ public class PatchMap {
     
     public static int personNum		   = 250;
     
-    public double percentBestLand  = 10;
+    public static double percentBestLand  = 10;
 	public int columnNum  	 = 50;			// column of the map
 	public int rowNum	     = 50;			// row of the map
 	public double diffusePercent = 25;		// use to diffuse grains
@@ -46,7 +46,7 @@ public class PatchMap {
 		}
 		
 		Consumer<Patch> setBestLand = (mPatch) -> {
-			if (PersonSettings.randomValue(0,99) <= percentBestLand) {
+			if (PersonSettings.randomValue(0,99) <= PatchMap.percentBestLand) {
 				mPatch.maxGrainHere = PatchMap.grainMax;
 				mPatch.grainHere = PatchMap.grainMax;
 			}
