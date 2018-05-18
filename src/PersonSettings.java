@@ -64,6 +64,6 @@ public class PersonSettings {
 			}
 		}
     	
-    	return new wealthRatio(rich, middle, poor);
+    	return new wealthRatio(rich, middle, poor, personArray.clone());
     }
 }
