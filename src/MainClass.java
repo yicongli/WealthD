@@ -58,7 +58,6 @@ public class MainClass {
 		
 		for (int i = 0; i < tickNum; i++) {
 			wealthRatio data = pMap.updateMapState(i);
-			pMap.allPersons.clone();
 			wealthRatioData.add(data);
 		}
 	}

@@ -49,7 +49,7 @@ public class Graph {
 
 	public static JPanel createLinewGraph() {
         seriesRich = new XYSeries("Rich");
-        seriesMid = new XYSeries("Middle");
+        seriesMid  = new XYSeries("Middle");
         seriesPoor = new XYSeries("Poor");
 
         XYSeriesCollection dataset = new XYSeriesCollection();

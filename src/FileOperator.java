@@ -6,9 +6,9 @@ import java.io.IOException;
 public class FileOperator {
 
 	public static void extractDataToFile () {
-		String strPoor="";
+		String strPoor 	="";
 		String strMiddle="";
-		String strRich="";
+		String strRich	="";
 
 		for (wealthRatio item : MainClass.wealthRatioData) {
 			strPoor   += item.poor + ",";
@@ -23,7 +23,7 @@ public class FileOperator {
 	
 	public static void savetoFile(String text, String name) {
 		try {
-			String fileName = name+".csv";
+			String fileName = name + ".csv";
 			File file = new File(fileName);
 			if (!file.exists()) {
 				file.createNewFile();
