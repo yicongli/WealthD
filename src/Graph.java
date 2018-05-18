@@ -76,8 +76,10 @@ public class Graph {
         int delay = 100; // seconds
         ActionListener taskTimer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
+            	// update pie chart
                 plot.setDataset(createPieDataset());
                 
+                // update class plot chart
                 wealthRatio data = MainClass.wealthRatioData.get(ticks);
                 seriesRich.add(ticks, data.rich);
                 seriesMid.add(ticks, data.middle);

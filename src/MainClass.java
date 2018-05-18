@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 class wealthRatio {
@@ -23,6 +22,7 @@ public class MainClass {
 		initialData();
 		Graph.generateCharts();
 		Graph.refresh();
+		FileOperator.extractDataToFile();
 	}
 	
 	public static void setParameter (String[] args) {
