@@ -1,10 +1,12 @@
-
-/*
- * location of person
+/**
+ * The class for storing person/patch location
+ *
+ * @author Yicong Li Student ID:923764 2018-05-18
  */
+
 class LocationCoordinate {
-	public int colCoord;
-	public int rowCoord;
+	public int colCoord;	// column coordinate
+	public int rowCoord;	// row coordinate
 	
 	public static int getNextCoord(int originalCoord, int step, int boundaryNum) {
 		return ((originalCoord + step) + boundaryNum) % boundaryNum;

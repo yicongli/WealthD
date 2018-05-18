@@ -73,13 +73,15 @@ public class Person {
         int rowNum = mPatchMap.rowNum;
 
         for (int i = 1; i <= vision; i++) {
-        	grainInRightVision 	+= mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,i,colNum)][row].grainHere;
-        	grainInLeftVision 	+= mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,-i,colNum)][row].grainHere;
-        	grainInUpVision 	+= mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,-i,rowNum)].grainHere;
-        	grainInDownVision 	+= mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,i,rowNum)].grainHere;
+        	grainInRightVision += mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,i,colNum)][row].grainHere;
+        	grainInLeftVision  += mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,-i,colNum)][row].grainHere;
+        	grainInUpVision    += mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,-i,rowNum)].grainHere;
+        	grainInDownVision  += mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,i,rowNum)].grainHere;
         }
 
-        int maxGrain = Math.max(grainInUpVision, Math.max(grainInDownVision, Math.max(grainInLeftVision, grainInRightVision)));
+        int maxGrain = Math.max(grainInUpVision, 
+        						Math.max(grainInDownVision, 
+        								Math.max(grainInLeftVision, grainInRightVision)));
         
         if (maxGrain == grainInUpVision) {
         	mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,-1,rowNum)].AddPerson(this);
