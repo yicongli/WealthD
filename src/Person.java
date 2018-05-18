@@ -1,5 +1,9 @@
-/*
- * Person Class
+/**
+ * Persons on the Patch Map
+ * 	- gain wealth and consume by metabolism
+ * 	- move around on the map seeking more grain.
+ *
+ * @author Yicong Li Student ID:923764 2018-05-18
  */
 
 /*
@@ -20,6 +24,9 @@ public class Person {
 	public PersonType personType;	// poor, middle, rich
 	public LocationCoordinate location;	// the location on patch
 	
+	/*
+	 * initiate person
+	 */
 	public Person(LocationCoordinate loc) {
 		initialParams(); 
 		age = PersonSettings.randomValue(0, lifeExpectancy); // modeling start with random age
@@ -72,6 +79,7 @@ public class Person {
         int colNum = mPatchMap.columnNum;
         int rowNum = mPatchMap.rowNum;
 
+        // calculate sum grain in each vision
         for (int i = 1; i <= vision; i++) {
         	grainInRightVision += mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,i,colNum)][row].grainHere;
         	grainInLeftVision  += mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,-i,colNum)][row].grainHere;
@@ -79,22 +87,24 @@ public class Person {
         	grainInDownVision  += mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,i,rowNum)].grainHere;
         }
 
+        // get max grain among 4 directions
         int maxGrain = Math.max(grainInUpVision, 
         						Math.max(grainInDownVision, 
         								Math.max(grainInLeftVision, grainInRightVision)));
         
+        // current person move to the direction with max grain and occupy the new patch
         if (maxGrain == grainInUpVision) {
-        	mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,-1,rowNum)].AddPerson(this);
         	location = location.moveUp(mPatchMap, 1);
+        	mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,-1,rowNum)].AddPerson(this);
 		} else if (maxGrain == grainInDownVision) {
-			mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,1,rowNum)].AddPerson(this);
 			location = location.moveDown(mPatchMap, 1);
+			mPatchMap.allPatchs[col][LocationCoordinate.getNextCoord(row,1,rowNum)].AddPerson(this);
 		} else if (maxGrain == grainInLeftVision) {
-			mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,-1,colNum)][row].AddPerson(this);
 			location = location.moveLeft(mPatchMap, 1);
+			mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,-1,colNum)][row].AddPerson(this);
 		} else {
-			mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,1,colNum)][row].AddPerson(this);
 			location = location.moveRight(mPatchMap, 1);
+			mPatchMap.allPatchs[LocationCoordinate.getNextCoord(col,1,colNum)][row].AddPerson(this);
 		}
     }
 }

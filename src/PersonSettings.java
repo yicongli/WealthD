@@ -1,10 +1,11 @@
-/*
- * person settings
+/**
+ * Global Parameters / functions for Person 
+ *
+ * @author Yicong Li Student ID:923764 2018-05-18
  */
 
 public class PersonSettings {
-	// person global attributes
-	
+
     public static int lifeExpectancyMax = 100;    // Maximum of person expectancy
     public static int lifeExpectancyMin = 1;      // Minimum of person expectancy
     public static int metabolismMax 	= 10;     // Maximum of Metabolism
@@ -13,29 +14,33 @@ public class PersonSettings {
     public static int visionMin		 	= 1;      // Min vision of person
     public static int wealthMax			= 50;	  // Maximum of person wealth
     
-    // person global functions
-    
+    // random value between minValue and maxValue
     public static int randomValue(int minValue, int maxValue) {
     	int range = maxValue - minValue;
         return (int)(Math.random() * (range + 1) + minValue);
     }
     
+    // random metabolism between metabolismMin and metabolismMax
     public static int randomMetabolism() {
 		return randomValue(metabolismMin, metabolismMax);
 	}
     
+    // random life expectancy between lifeExpectancyMin and lifeExpectancyMax
     public static int randomLifeExpectancy() {
 		return randomValue(lifeExpectancyMin, lifeExpectancyMax);
 	}
     
+    // random vision between visionMin and visionMax
     public static int randomVision() {
 		return randomValue(visionMin, visionMax);
 	}
     
+    // random wealth between metabolism and wealthMax
     public static int randomWealth(int metabolism) {
 		return randomValue(metabolism, wealthMax);
 	}
     
+    // update each person's wealth type according to current wealth distribution
     public static wealthRatio updatePersonType(Person[] personArray) {
     	// get max wealth value
     	double maxWealth = 0;
@@ -64,6 +69,7 @@ public class PersonSettings {
 			}
 		}
     	
+    	// return wealth ratio data of current tick
     	return new wealthRatio(rich, middle, poor, personArray.clone());
     }
 }

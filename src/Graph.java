@@ -69,7 +69,7 @@ public class Graph {
 	 */
 	public static DefaultPieDataset createPieDataset () {
 		DefaultPieDataset dpd = new DefaultPieDataset();
-		wealthRatio data = MainClass.wealthRatioData.get(ticks);
+		wealthRatio data = MainClass.wealthDistributionData.get(ticks);
         dpd.setValue("Rich", data.rich);
         dpd.setValue("Middle", data.middle);
         dpd.setValue("Poor", data.poor);
@@ -115,7 +115,7 @@ public class Graph {
                 piePlot.setDataset(createPieDataset());
                 
                 // update class plot chart
-                wealthRatio data = MainClass.wealthRatioData.get(ticks);
+                wealthRatio data = MainClass.wealthDistributionData.get(ticks);
                 seriesRich.add(ticks, data.rich);
                 seriesMid.add(ticks, data.middle);
                 seriesPoor.add(ticks, data.poor);

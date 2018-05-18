@@ -25,7 +25,7 @@ public class FileOperator {
 		String strRich	 = "";	// string for storing rich person number
 
 		// extract data from cache and save to string
-		for (wealthRatio item : MainClass.wealthRatioData) {
+		for (wealthRatio item : MainClass.wealthDistributionData) {
 			strPoor   += item.poor + ",";
 			strMiddle += item.middle + ",";
 			strRich   += item.rich + ",";

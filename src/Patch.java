@@ -1,8 +1,11 @@
-import java.util.ArrayList;
-
-/*
- * Patch Class
+/**
+ * Each patch location in Patch Map:
+ * 	- Grow grain
+ * 	- Distribute grain to occupied persons
+ *
+ * @author Yicong Li Student ID:923764 2018-05-18
  */
+import java.util.ArrayList;
 
 public class Patch {
 	public double grainHere;					// the current amount of grain on this patch

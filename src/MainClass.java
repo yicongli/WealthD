@@ -1,10 +1,20 @@
+/**
+ * @author Yicong Li Student ID:923764 2018-05-18
+ */
 import java.util.ArrayList;
 
+/**
+ * Data item of each tick
+ */
 class wealthRatio {
-	int rich;
-	int poor;
-	int middle;
-	Person [] curPersonData;
+	int rich;	// Rich person number in current tick
+	int poor;	// Poor person number in current tick
+	int middle; // Middle person number in current tick
+	Person [] curPersonData;	// All Person data in current tick
+	
+	/*
+	 * initiate wealthRatio
+	 */
 	public wealthRatio(int r, int m, int p, Person[] data) {
 		rich = r;
 		middle = m;
@@ -13,10 +23,16 @@ class wealthRatio {
 	}
 }
 
+/*
+ * Main class for running the model simulation
+ */
 public class MainClass {
-	public static int tickNum = 1000;
-	public static ArrayList<wealthRatio> wealthRatioData;
+	public static int tickNum = 1000;						// the total tick number
+	public static ArrayList<wealthRatio> wealthDistributionData;	// Data Array for saving tick data
 	
+	/*
+	 * Run model simulation
+	 */
 	public static void main(String[] args) {
 		setParameter(args);
 		initialData();
@@ -25,8 +41,13 @@ public class MainClass {
 		FileOperator.extractDataToFile();
 	}
 	
+	/*
+	 * Set model parameter
+	 */
 	public static void setParameter (String[] args) {
 		String paramType = null;
+		// if receive 8 parameters, then set the params, 
+		// otherwise use default values.
 		if (args.length == 8) {
 			PatchMap.personNum 		 	 = Integer.parseInt(args[0]);
 			PersonSettings.visionMax 	 = Integer.parseInt(args[1]);
@@ -52,13 +73,18 @@ public class MainClass {
 				+ "\nNumGrainGrown: " + PatchMap.numGrainGrown);
 	}
 	
+	/*
+	 * initial Patch Map and run model simulation
+	 */
 	public static void initialData () {
+		// initial patch map
 		PatchMap pMap = new PatchMap();
-		wealthRatioData = new ArrayList<wealthRatio>();
+		wealthDistributionData = new ArrayList<wealthRatio>();
 		
+		// update map state and save tick data to DataArray
 		for (int i = 0; i < tickNum; i++) {
 			wealthRatio data = pMap.updateMapState(i);
-			wealthRatioData.add(data);
+			wealthDistributionData.add(data);
 		}
 	}
 }
