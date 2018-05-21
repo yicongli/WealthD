@@ -19,6 +19,7 @@ import javax.swing.Timer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.general.DefaultPieDataset;
@@ -61,6 +62,7 @@ public class Graph {
 				false); 
 		
         piePlot = (PiePlot) chart.getPlot();
+        piePlot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} {1} {2}"));
         return new ChartPanel (chart,true);
 	}
 	
@@ -70,9 +72,9 @@ public class Graph {
 	public static DefaultPieDataset createPieDataset () {
 		DefaultPieDataset dpd = new DefaultPieDataset();
 		wealthRatio data = MainClass.wealthDistributionData.get(ticks);
-        dpd.setValue("Rich", data.rich);
-        dpd.setValue("Middle", data.middle);
-        dpd.setValue("Poor", data.poor);
+        dpd.setValue("Rich:", data.rich);
+        dpd.setValue("Middle:", data.middle);
+        dpd.setValue("Poor:", data.poor);
         return dpd;
 	}
 
