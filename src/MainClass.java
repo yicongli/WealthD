@@ -34,11 +34,11 @@ public class MainClass {
 	 * Run model simulation
 	 */
 	public static void main(String[] args) {
-		setParameter(args);
-		initialData();
-		Graph.generateCharts();
-		Graph.refresh();
-		FileOperator.extractDataToFile();
+		setParameter(args);					// set the parameters of the model
+		initialData();						// generate the model data
+		Graph.generateCharts();				// create charts 
+		Graph.refresh();					// refresh data in each tick
+		FileOperator.extractDataToFile();	// extract data to the file
 	}
 	
 	/*
