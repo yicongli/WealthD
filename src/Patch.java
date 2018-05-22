@@ -3,7 +3,9 @@
  * 	- Grow grain
  * 	- Distribute grain to occupied persons
  *
- * @author Yicong Li Student ID:923764 2018-05-18
+ * @author Yicong   Li      ID:923764 2018-05-18
+ * @author Savan    Kanabar ID:965371 2018-05-18
+ * @author Emmanuel Mogbeyi ID:854106 2018-05-18
  */
 import java.util.ArrayList;
 

@@ -5,7 +5,9 @@
  *  - Initiate graphs which is used to show the model trend
  *  - Update the graphs according to the cache data(wealthRatioData)
  *
- * @author Yicong Li Student ID:923764 2018-05-18
+ * @author Yicong   Li      ID:923764 2018-05-18
+ * @author Savan    Kanabar ID:965371 2018-05-18
+ * @author Emmanuel Mogbeyi ID:854106 2018-05-18
  */
 
 import java.awt.GridLayout;

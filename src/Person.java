@@ -3,7 +3,9 @@
  * 	- gain wealth and consume by metabolism
  * 	- move around on the map seeking more grain.
  *
- * @author Yicong Li Student ID:923764 2018-05-18
+ * @author Yicong   Li      ID:923764 2018-05-18
+ * @author Savan    Kanabar ID:965371 2018-05-18
+ * @author Emmanuel Mogbeyi ID:854106 2018-05-18
  */
 
 /*

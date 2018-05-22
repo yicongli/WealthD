@@ -5,7 +5,9 @@
  *  - Convert person wealth number in each tick into string
  *  - Save string into local file
  *
- * @author Yicong Li Student ID:923764 2018-05-18
+ * @author Yicong   Li      ID:923764 2018-05-18
+ * @author Savan    Kanabar ID:965371 2018-05-18
+ * @author Emmanuel Mogbeyi ID:854106 2018-05-18
  */
 
 import java.io.BufferedWriter;
