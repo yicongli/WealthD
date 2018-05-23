@@ -64,7 +64,7 @@ public class Graph {
 				false); 
 		
         piePlot = (PiePlot) chart.getPlot();
-        piePlot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} {1} {2}"));
+        piePlot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} {1}"));
         return new ChartPanel (chart,true);
 	}
 	
