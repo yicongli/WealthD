@@ -16,8 +16,8 @@ public class PatchMap {
     public static int personNum		   	  = 250;// person number in current patch map
     public static double percentBestLand  = 10; // the ratio of best land
     
-	public int columnNum  	 = 50;			// column of the map
-	public int rowNum	     = 50;			// row of the map
+	public int columnNum  	 = 500;			// column of the map
+	public int rowNum	     = 500;			// row of the map
 	public double diffusePercent = 25;		// percentage for diffusing grains
 	
 	public Person[]  allPersons = null;		// person array in current map
